@@ -109,10 +109,10 @@ export class AcceuilComponent implements OnInit {
         console.log("registre google account")
          localStorage.removeItem('authorization');
          localStorage.setItem('authorization', res.accessToken);
-         console.log("registre google account")
+         console.log("registre google account");
+         $('#elegantModalFormRegistre').modal('hide');
+         $('#elegantModalForm').modal('hide');
           this._router.navigate(['/home']);
-          $('#elegantModalFormRegistre').modal('hide');
-          $('#elegantModalForm').modal('hide');
        },
        err=>{
          console.log(err.error);

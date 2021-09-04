@@ -27,8 +27,6 @@ export class NavbarComponent implements OnInit {
     $('#elegantModalForm').modal('show');
   }
   public profile(){
-
-
     switch(this.role){
       case 'client' :    this._router.navigate(['/home']); break;
       case 'specialiste' :    this._router.navigate(['/specialiste/home']);

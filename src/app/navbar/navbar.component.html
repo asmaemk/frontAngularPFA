@@ -33,7 +33,7 @@
             <ul>
               <li *ngIf="!isLogged"><a  (click)="signUp()">S'inscrire</a></li>
               <li *ngIf="!isLogged"><a (click)="signIn()" >Se connecter</a></li>
-              <!-- <li class="d-flex text-center li-nav"><button class="btn btn-primary nav-btn me-2">S'inscrire</button><button class="btn btn-warning nav-btn">Se connecter</button></li> -->
+              <li (click)="profile()" *ngIf="isLogged"><a>Mon espace</a></li>
               <li><a >Contactez nous</a></li>
               <li><a >Rendu-Vous</a></li>
               <li *ngIf="isLogged"><a (click)="log_out()">Déconnecter</a></li>
