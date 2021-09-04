@@ -37,9 +37,9 @@ export class GestionSpecialisteServiceService {
     return this.http.post<any>(this._updateSpecialisteUrl,{id,nom,prenom,sexe,date_naissance,email,tele,specialite,adresse,password});
 
   }
-  public updateSpecialiste2(id : number,nom : String,prenom :String,sexe : String,date_naissance : Date,email : String,tele : String,specialite : String,adresse: String,password : String){
+  public updateSpecialiste2(id : number,nom : String,prenom :String,sexe : String,date_naissance : Date,email : String,tele : String,specialite : String,adresse: String){
 
-    return this.http.post<any>(this._updateSpecialisteUrl,{id,nom,prenom,sexe,date_naissance,email,tele,specialite,adresse,password});
+    return this.http.post<any>(this._updateSpecialisteUrl,{id,nom,prenom,sexe,date_naissance,email,tele,specialite,adresse});
 
   }
 }

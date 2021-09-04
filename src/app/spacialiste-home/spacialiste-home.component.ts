@@ -25,23 +25,13 @@ public titleCase = "abdo"
   private fileCV: File = new File(["foo"], "foo.txt");
   public profile = "../assets/img/contact.png";
   uploading : boolean = true;
-  public user = {
-    date_naissance: '',
-    id : 0,
-  email: '',
-  nom: '',
-  numero_tele: '',
-  prenom: '',
-  specialite: '',
-  adresse: '',
-  role: '',
-  picture:'',
-  };
+  public user = {date_naissance: '',id : 0,email: '',nom: '',numero_tele: '',sexe:'',prenom: '',specialite: '',adresse: '',role: '',picture:'',};
   selectedFile = null;
   specialiste = 0; 
   public static specialistes : Array<any> = [];
   public static clt : any;
   clt= this.specialistesValue();
+  registerForm: any;
 
   constructor(private route : ActivatedRoute,private _auth : AuthService,private _gestionSpecialiste : GestionSpecialisteServiceService, private _router: Router, private formBuilder: FormBuilder) { }
 
@@ -63,7 +53,7 @@ public titleCase = "abdo"
     console.log("click")
     const formDataProfile = new FormData();
     formDataProfile.append('file', this.image);
-    this._auth.uploadProfileSpecialiste(SpacialisteHomeComponent.specialistes[0].id,formDataProfile).subscribe(
+    this._auth.uploadProfileSpecialiste(this.user.id,formDataProfile).subscribe(
       
       res=>{
         (document.getElementById('myImage3') as HTMLFormElement).src = res.src;
@@ -111,27 +101,76 @@ public titleCase = "abdo"
     console.log(this.fileCV);
   }
   public specialistesValue(){
-    return SpacialisteHomeComponent.specialistes[0];
-  }
-  public updateSpecialiste2(id:number){
-
-    this._router.navigate([`/specialiste/modifier-specialiste/${id}`]);
-
+    return this.user;
   }
 
-  async ngOnInit(): Promise<void> {
+  updateUser(){
+    $('#elegantModalFormUpdate').modal('show');
+  }
 
-    await this._auth.getInformation().subscribe(
-      
-      (      res: any) => {
- 
-        SpacialisteHomeComponent.specialistes = [res];
-        this.uploading = false;
+  public registreSubmit(){
+
+    // console.log(this.nom,this.prenom,this.sexe,this.date_naissance,this.email,this.tele,this.profession,this.password)
+    this.submitted = true;
+
+    const {nom,prenom,sexe,date_naissance,email,tele,specialite,adresse} = this.registerForm.value;
+    if (this.registerForm.invalid) {
+        return;
+    }
+
+
+    this._gestionSpecialiste.updateSpecialiste2(this.user.id,nom,prenom,sexe,date_naissance,email,tele,specialite,adresse).subscribe(
+      res =>{
+        console.log(res.message);
+        $('#myModal').modal('show');
+        $('#elegantModalFormUpdate').modal('hide');
+        setTimeout(()=>{
+          $('#myModal').modal('hide');
+          window.location.href = "http://localhost:4200/specialiste/home";
+        },1000)
       },
-      (      err: any) => {
-        if(err instanceof HttpErrorResponse){
-           console.log(err)
-        }})
+      err=> console.log(err)
+    )
+  }
+  get f() { return this.registerForm.controls; }
+   ngOnInit(): void{
+
+    this._auth.getInformation().subscribe(
+
+      res => {
+        this.user = res;
+      },
+      (err: any) => {
+        if (err instanceof HttpErrorResponse) {
+          console.log(err);
+        }
+      })
+      setTimeout(() => {
+        this.registerForm = this.formBuilder.group({
+          nom: [this.user.nom, Validators.required],
+          prenom: [this.user.prenom, Validators.required],
+          email: [this.user.email, [Validators.required, Validators.email]],
+          tele: [this.user.numero_tele, [Validators.required,Validators.pattern("^((\\([0-9][0-9][0-9]\\))|(\\([0-9][0-9]\\)))?\\-[0-9]{10}$")] ],
+          sexe : [this.user.sexe, [Validators.required]],
+          date_naissance : [this.user?.date_naissance ? this.user.date_naissance.split('T')[0] : "null", [Validators.required]],
+          adresse : [this.user.adresse, [Validators.required]],
+          specialite : [this.user.specialite, [Validators.required]] },{
+            // validator: this.MustMatch('password', 'confirmPassword')
+          });
+       }, 3000);
+
+
+        this.registerForm = this.formBuilder.group({
+          nom: [this.user.nom, Validators.required],
+          prenom: [this.user.prenom, Validators.required],
+          email: [this.user.email, [Validators.required, Validators.email]],
+          tele: [this.user.numero_tele, [Validators.required,Validators.pattern("^((\\([0-9][0-9][0-9]\\))|(\\([0-9][0-9]\\)))?\\-[0-9]{10}$")] ],
+          sexe : [this.user.sexe, [Validators.required]],
+          date_naissance : [ this.user.date_naissance, [Validators.required]],
+          adresse : [this.user.adresse, [Validators.required]],
+          specialite : [this.user.specialite, [Validators.required]]  },{
+            // validator: this.MustMatch('password', 'confirmPassword')
+          });
   } 
 
 }

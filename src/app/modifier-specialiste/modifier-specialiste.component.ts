@@ -127,7 +127,7 @@ public profile = "../assets/img/contact.png";
     const formDataCV = new FormData();
     formDataCV.append('file', this.fileCV);
     console.log(formDataCV);
-    this._gestionSpecialiste.updateSpecialiste2(this.id,nom,prenom,sexe,date_naissance,email,tele,specialite,adresse,this.specialistesValue().password).subscribe(
+    this._gestionSpecialiste.updateSpecialiste2(this.id,nom,prenom,sexe,date_naissance,email,tele,specialite,adresse).subscribe(
       res =>{
         console.log(res.message);
         this.message = res.message;
