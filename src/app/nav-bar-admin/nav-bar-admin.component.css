@@ -1,0 +1,23 @@
+nav{
+    background: #3931af;
+    font-family:cursive;
+    font-size: 0.9rem;
+    /* font-weight: bold; */
+    line-height: 1.5;
+    /* padding-top: 0%; */
+    margin-left: 7%;
+    margin-right: 7%;
+    /* border-radius: 20px; */
+}
+
+.active1{
+    /* color: yellow !important; */
+}
+.text-warning{
+    /* background-color: black; */
+    color: yellow !important;
+    /* border-top: 1.5px rgb(255, 255, 255) solid !important;
+    border-right: 1.5px rgb(255, 255, 255) solid !important;
+    border-left: 1.5px rgb(255, 255, 255) solid !important;
+} */
+}

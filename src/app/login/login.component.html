@@ -1,0 +1,99 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Creative - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!-- <link href="styles.css" rel="stylesheet" /> -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" async crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" async crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" async crossorigin="anonymous"></script>
+r: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+======================================================== -->
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<app-navbar></app-navbar>
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+
+  <div class="container m-0 p-0">
+    <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+            <div class="login-box col-md-12">
+
+                <form id="login-form" [formGroup]="registerForm" (ngSubmit)="loginSubmit()" class="form" action="" method="post">
+                    <h3 class="text-center text-white">Se connecter</h3><br>
+                    <div class="container">
+                        <div class="onl_login">
+                            <div class="row onl_row-sm-offset-3 onl_socialButtons">
+                                <div class="col-xs-3 col-sm-3">
+                                    <a (click)="signInFacebook()" class="btn  btn-block onl_btn-facebook" data-toggle="tooltip"
+                                        data-placement="top" title="Facebook">
+                                        <i class="fa fa-facebook "></i>
+
+                                    </a>
+                                </div>
+                                <div class="col-xs-3 col-sm-3">
+                                    <a (click)="signInGoogle()" class="btn  btn-block onl_btn-google-plus"
+                                        data-toggle="tooltip" data-placement="top" title="Google Plus">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </div>
+                            </div><br>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-white">Email</label>
+                            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email est obligatoire</div>
+                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-white">Mot de passe</label>
+                            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Mot de passe  est obligatoire</div>
+                                <div *ngIf="f.password.errors.minlength">Mot de passe faut centenir au mois 6 carateres</div>
+                            </div>
+                        </div>
+                        <div class="form-group"> <br>
+                                <input type="submit" (click)="loginSubmit()" name="submit" class="btn btn-primary text-white btn-md submit"
+                                value="Se connecter">
+                        </div>
+                        <div id="register-link" class="text-right">
+                            <a href="/registre/client" class="text-white">S'inscrire</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div *ngIf="errorLogin" class="bg-danger"></div>
+        </div>
+        
+    </div>
+  </div>
+</section><!-- End Hero -->
+       
+    </body>
+    <script src="../../assets/js/main.js"></script>
+</html>

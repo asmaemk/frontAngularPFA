@@ -1,0 +1,428 @@
+<script src="https://kit.fontawesome.com/be1264b7bd.js" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+<app-nav-bar-test></app-nav-bar-test>
+
+ <!-- Modal-for registre success -->
+ <div class="modal fade" id="elegantModalFormSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog" role="document">
+     <!--Content-->
+     <div class="modal-content form-elegant">
+         <!--Header-->
+         <div class="modal-header text-center">
+             <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong class="text-success">Votre Inscription est bien envoyer</strong></h3>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+             </button>
+         </div>
+         <!--Body-->
+         <div class="modal-body mx-4">
+             {{message}}
+         </div>
+         <!--Footer-->
+     </div>
+     <!--/.Content-->
+ </div>
+</div>
+<!-- Modal -->
+
+
+<body class="m-0">
+  <br>
+  <div class="container">
+    <div class="main-body">
+      <!-- /Breadcrumb -->
+      <div class="row gutters-sm">
+        <div class="col-md-3 mb-1">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img id="myImage1" [src]="user.picture ? user.picture :  profile " alt="admin"
+                  class="rounded-circle profile" width="200" height="200">
+                <hr>
+
+                <div class="mt-3">
+                  <h4>Taoussi Chaimae </h4>
+                  <p class="text-secondary mb-1">CEO & Founder,à Medico-Call</p>
+                  <p class="text-muted font-size-sm">Settat,Maroc</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-9">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="menu">
+                <nav class="navbar navbar-expand-lg navbar-light ">
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent" type="button"
+                    style="text-align: center;">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                      <li class="nav-item">
+                        <a class="nav-link fw-bold ms-5" [routerLink]="['/admin']">Profile</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fw-bold ms-5" [routerLink]="['/admin/client-side']"
+                          routerLinkActive="active">Gestion client</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fw-bold ms-5" [routerLink]="['/admin/specialiste-side']"
+                          routerLinkActive="active">Gestion specialiste</a>
+                      </li>
+                      <!-- <li class="nav-item">                                                 
+                            <a class="nav-link fw-bold ms-5" [routerLink]="['/board-stress']" routerLinkActive="active">Enquete de stress</a>
+                          </li> -->
+                    </ul>
+
+                  </div>
+                </nav>
+                <hr>
+                <hr class="hr">
+
+                <div class="row mb-3 form-group">
+                  <div class="col-sm-12">
+                    <div class="container-fluid">
+                      <section class="mt-0 mb-2">
+                        <button class="btn btn-primary me-2 text-white p-2 add"><a class="text-white"
+                            (click)="ajouter()"> Ajouter un client
+                          </a></button>
+                        <input [(ngModel)]="filterSearch" class="form-control  d-inline-block"
+                          style="width: 79.5%;border: 2px solid #7f7f7f;"
+                          placeholder="Filtrer les resultas selon (nom,prenom,...)">
+                      </section> <!-- End search section -->
+
+                      <section class='tableSection scroll'>
+                        <div class="text-center">
+                          <table class="table table-bordered  matTable">
+                            <thead>
+                              <tr>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prenom</th>
+                                <th scope="col">Sexe</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Telephonne</th>
+                                <th scope="col">Profession</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let client of clientsValue()  | filter:filterSearch">
+                              <tr>
+                                <!-- <th scope="row">{{client.nom}}</th> -->
+                                <td>{{client.nom}}</td>
+                                <td>{{client.prenom}}</td>
+                                <td>{{client.sexe ? client.sexe : "null"}}</td>
+                                <td>{{client.email}}</td>
+                                <td>{{client.numero_tele ? client.numero_tele : "null"}}</td>
+                                <td>{{client.profession }}</td>
+                                <td><button class="btn btn-danger p-0 add" (click)="deleteClient(client.id)"><i
+                                      class="fas fa-trash-alt p-2"></i></button></td>
+                                <td><button class="btn btn-primary p-0 add" (click)="updateClient(client.id)"><i
+                                      class="fas fa-pencil-alt p-2"></i></button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col-sm-12">
+                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                    </div>
+                  </div> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Modal -->
+<div class="modal fade " id="elegantModalFormUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <!--Content-->
+    <div class="modal-content form-elegant">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3 ms-5" id="myModalLabel">
+          <strong>Modifier votre client</strong>
+        </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-4">
+        <form [formGroup]="updateForm" (ngSubmit)="updateSubmit(client.id)">
+          <div class="row register-form">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" formControlName="nom" class="form-control validate" placeholder="Votre Nom *"
+                  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                  <div *ngIf="f.nom.errors.required">Nom est obligatoire</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" formControlName="prenom" placeholder="Votre Prenom *" class="form-control validate"
+                  [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="f.prenom.errors.required">Prenom est obligatoire</div>
+                </div>
+              </div>
+              <div class="form-group">
+                  <select formControlName="sexe" class="form-control validate"
+                    [ngClass]="{ 'is-invalid': submitted && f.sexe.errors }" class="custom-select validate">
+                    <option value="" selected disabled>Votre Sexe *</option>
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                  </select>
+                  <div *ngIf="submitted && f.sexe.errors" class="invalid-feedback">
+                    <div *ngIf="f.sexe.errors.required">Sexe est obligatoire</div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <input placeholder="Date de naissance *" type="date" formControlName="date_naissance"
+                  class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.date_naissance.errors }" />
+                <div *ngIf="submitted && f.date_naissance.errors" class="invalid-feedback">
+                  <div *ngIf="f.date_naissance.errors.required">Date de naissance est obligatoire
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" formControlName="email" placeholder="Votre Email *" class="form-control validate"
+                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email est obligatoire</div>
+                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" placeholder="Votre Numero De Tele *" formControlName="tele"
+                  class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.tele.errors }" />
+                <div *ngIf="submitted && f.tele.errors" class="invalid-feedback">
+                  <div *ngIf="f.tele.errors.required">Numero de tele est obligatoire</div>
+                  <div *ngIf="f.tele.errors.pattern">Invalid phone number.</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Votre Adresse *" formControlName="adresse" class="form-control validate"
+                  [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" />
+                <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+                  <div *ngIf="f.adresse.errors.required">Adresse est obligatoire</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <select formControlName="profession" class="form-control validate"
+                  [ngClass]="{ 'is-invalid': submitted && f.profession.errors }" class="custom-select validate">
+                  <option value="" selected disabled>Votre profession *</option>
+                  <option value="Etudiant">Etudiant</option>
+                  <option value="Professeur">Professeur</option>
+                  <option value="Doctorant">Doctorant</option>
+                  <option value="autre">autre</option>
+                </select>
+                <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+                  <div *ngIf="f.profession.errors.required">profession est obligatoire</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <select formControlName="niveauScolaire" class="form-control validate"
+                  [ngClass]="{ 'is-invalid': submitted && f.niveauScolaire.errors }" class="custom-select validate">
+                  <option value="" selected disabled>Votre niveau scolaire *</option>
+                  <option value="1 ere annee preparatoire">1 ere annee preparatoire</option>
+                  <option value="2 eme annee preparatoire">2 eme annee preparatoire</option>
+                  <option value="1 ere annee cycle d'ingenieur">1 ere annee cycle d'ingenieur</option>
+                  <option value="2 eme annee cycle d'ingenieur">2 eme annee cycle d'ingenieur</option>
+                  <option value="3 eme annee cycle d'ingenieur">3 eme annee cycle d'ingenieur</option>
+                </select>
+                <div *ngIf="submitted && f?.profession.errors" class="invalid-feedback">
+                  <div *ngIf="f?.profession.errors.required">profession est obligatoire</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="password" placeholder="Votre Mot De Passe *" formControlName="password"
+                  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                  <div *ngIf="f.password.errors.minlength">Password must be at least 6
+                    characters</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="text-center mb-3 mt-3 me-auto">
+          <button type="button" (click)="updateSubmit(client.id)"
+            class="btn blue-gradient btn-block btn-rounded z-depth-1a inscrire">Enregistrer Les
+            Modifications</button>
+        </div>
+      </div>
+      <!--Footer-->
+      <!-- <div class="modal-footer mx-5 pt-3 mb-1">
+ <p class="font-small grey-text d-flex justify-content-end">vous n'etes pas un membre? <a href="#"
+         class="blue-text ml-1">
+         S'inscrire</a></p>
+</div> -->
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Modal -->
+
+ <!-- modal success updating  -->
+ <div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+          <div class="modal-header justify-content-center">
+              <div class="icon-box">
+                  <i class="far fa-check-circle"></i>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body text-center">
+              <h4>Parfait!</h4>	
+              <p>les Modifications sont bien enregistrés.</p>
+          </div>
+      </div>
+  </div>
+</div>   
+
+ <!-- Modal -->
+ <div class="modal fade " id="elegantModalFormRegistre" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog modal-xl" role="document">
+     <!--Content-->
+     <div class="modal-content form-elegant">
+         <!--Header-->
+         <div class="modal-header text-center">
+             <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3 ms-5" id="myModalLabel">
+                 <strong>Ajouter Un Client</strong></h3>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+             </button>
+         </div>
+         <!--Body-->
+         <div class="modal-body mx-4">
+             <!--Body-->
+             <form [formGroup]="addForm" (ngSubmit)="registreSubmit()">
+                 <div class="row register-form">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <input type="text" formControlName="nom" class="form-control validate" placeholder="Votre Nom *" [ngClass]="{ 'is-invalid': submitted && f2.nom.errors }" />
+                             <div *ngIf="submitted && f2.nom.errors" class="invalid-feedback">
+                                 <div *ngIf="f2.nom.errors.required">Nom est obligatoire</div>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <input type="text" formControlName="prenom" placeholder="Votre Prenom *" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f2.prenom.errors }" />
+                             <div *ngIf="submitted && f2.prenom.errors" class="invalid-feedback">
+                                 <div *ngIf="f2.prenom.errors.required">Prenom est obligatoire</div>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <div class="maxl">
+                                 <select  formControlName="sexe" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f2.sexe.errors }" class="custom-select validate">
+                                     <option value="" selected disabled>Votre Sexe *</option>
+                                     <option value="M">M</option>
+                                     <option value="F">F</option>
+                                 </select>
+                                 <div *ngIf="submitted && f2.sexe.errors" class="invalid-feedback">
+                                     <div *ngIf="f2.sexe.errors.required">Sexe est obligatoire</div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <input placeholder="Date de naissance *" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" formControlName="date_naissance" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f2.date_naissance.errors }"  />
+                             <div *ngIf="submitted && f2.date_naissance.errors" class="invalid-feedback">
+                                 <div *ngIf="f2.date_naissance.errors.required">Date de naissance est obligatoire</div>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <input type="text" formControlName="email" placeholder="Votre Email *" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f2.email.errors }" />
+                             <div *ngIf="submitted && f2.email.errors" class="invalid-feedback">
+                                 <div *ngIf="f2.email.errors.required">Email est obligatoire</div>
+                                 <div *ngIf="f2.email.errors.email">Email must be a valid email address</div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <input type="text" [(ngModel)]="TELE" (focus)="changeTele()"   placeholder="Votre Numero De Tele *" formControlName="tele" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f2.tele.errors }" />
+                             <div *ngIf="submitted && f2.tele.errors" class="invalid-feedback">
+                                 <div *ngIf="f2.tele.errors.required">Numero de tele est obligatoire</div>
+                                 <div *ngIf="f2.tele.errors.pattern">Invalid phone number.</div>
+                             </div>
+                         </div>
+
+                         <div class="form-group">
+                          <select formControlName="profession" class="form-control validate"
+                          [ngClass]="{ 'is-invalid': submitted && f.profession.errors }" class="custom-select validate">
+                          <option value="" selected disabled>Votre profession *</option>
+                          <option value="Etudiant">Etudiant</option>
+                          <option value="Professeur">Professeur</option>
+                          <option value="Doctorant">Doctorant</option>
+                          <option value="autre">autre</option>
+                        </select>
+                             <div *ngIf="submitted && f2.profession.errors" class="invalid-feedback">
+                                 <div *ngIf="f2.profession.errors.required">profession est obligatoire</div>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                          <select formControlName="niveauScolaire" class="form-control validate"
+                          [ngClass]="{ 'is-invalid': submitted && f.niveauScolaire.errors }"
+                          class="custom-select validate">
+                          <option value="" selected disabled>Votre niveau scolaire *</option>
+                          <option value="1 ere annee preparatoire">1 ere annee preparatoire</option>
+                          <option value="2 eme annee preparatoire">2 eme annee preparatoire</option>
+                          <option value="1 ere annee cycle d'ingenieur">1 ere annee cycle d'ingenieur</option>
+                          <option value="2 eme annee cycle d'ingenieur">2 eme annee cycle d'ingenieur</option>
+                          <option value="3 eme annee cycle d'ingenieur">3 eme annee cycle d'ingenieur</option>
+                      </select>
+                             <div *ngIf="submitted && f2.profession.errors" class="invalid-feedback">
+                                 <div *ngIf="f2.profession.errors.required">profession est obligatoire</div>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <input type="password" placeholder="Votre Mot De Passe *" formControlName="password" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f2.password.errors }" />
+                             <div *ngIf="submitted && f2.password.errors" class="invalid-feedback">
+                                 <div *ngIf="f2.password.errors.required">Password est obligatoire</div>
+                                 <div *ngIf="f2.password.errors.minlength">Password must be at least 6 characters</div>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <input type="password" placeholder="Confirmer Votre Mot De Passe *" formControlName="passwordConfirm" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f2.passwordConfirm.errors }" />
+                             <div *ngIf="submitted && f2.passwordConfirm.errors" class="invalid-feedback">
+                                 <div *ngIf="f2.passwordConfirm.errors.required">Password est obligatoire</div>
+                                 <div *ngIf="f2.passwordConfirm.errors.minlength">Password must be at least 6 characters</div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+         
+             </form>
+             <div class="text-center mb-3 mt-3 me-auto">
+                 <button type="button" (click)="registreSubmit()" class="btn blue-gradient btn-block btn-rounded z-depth-1a inscrire">Ajouter</button>
+             </div>
+         </div>
+         <!--Footer-->
+         <!-- <div class="modal-footer mx-5 pt-3 mb-1">
+             <p class="font-small grey-text d-flex justify-content-end">vous n'etes pas un membre? <a href="#"
+                     class="blue-text ml-1">
+                     S'inscrire</a></p>
+         </div> -->
+     </div>
+     <!--/.Content-->
+ </div>
+</div>

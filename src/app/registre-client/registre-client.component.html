@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Creative - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!-- <link href="styles.css" rel="stylesheet" /> -->
+    </head>
+
+    <body id="page-top">
+        <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="exampleModalLongTitle">Votre inscription est bien effectuer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <p>Veuillez confirmer votre email pour bien acceder a votre compte</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ferme</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="register">
+    <app-navbar></app-navbar>
+<div id="login">
+    <div class="row mt-4">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Bonjour</h3>
+            <p>vous etes dans le bon chemain</p>
+            <button > <a href="/login" class="text-dark">Se Connecter</a></button><br />
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="home-tab" data-toggle="tab" (click)="signInGoogle()" role="tab"
+                        aria-controls="home" aria-selected="true"><img src="../../assets/img/google.png"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="home-tab" data-toggle="tab" (click)="signInGoogle()" role="tab"
+                    aria-controls="home" aria-selected="true"><img class="me-5" src="../../assets/img/facebook.png"></a>
+                    
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Rejoinez nous</h3>
+                    <form [formGroup]="registerForm" (ngSubmit)=" registreSubmit()">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" formControlName="nom" class="form-control" placeholder="Votre Nom *" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                                        <div *ngIf="f.nom.errors.required">Nom est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" formControlName="prenom" placeholder="Votre Prenom *" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                                    <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                                        <div *ngIf="f.prenom.errors.required">Prenom est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="maxl">
+                                        <select  formControlName="sexe" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sexe.errors }" class="custom-select">
+                                            <option value="" selected disabled>Votre Sexe *</option>
+                                            <option value="M">M</option>
+                                            <option value="F">F</option>
+                                        </select>
+                                        <div *ngIf="submitted && f.sexe.errors" class="invalid-feedback">
+                                            <div *ngIf="f.sexe.errors.required">Sexe est obligatoire</div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input placeholder="Date de naissance *" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" formControlName="date_naissance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date_naissance.errors }"  />
+                                    <div *ngIf="submitted && f.date_naissance.errors" class="invalid-feedback">
+                                        <div *ngIf="f.date_naissance.errors.required">Date de naissance est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" formControlName="email" placeholder="Votre Email *" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email est obligatoire</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- (keyup)="changeTele()" -->
+                                <div class="form-group">
+                                    <input type="text" [(ngModel)]="TELE" (focus)="changeTele()"   placeholder="Votre Numero De Tele *" formControlName="tele" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tele.errors }" />
+                                    <div *ngIf="submitted && f.tele.errors" class="invalid-feedback">
+                                        <div *ngIf="f.tele.errors.required">Numero de tele est obligatoire</div>
+                                        <div *ngIf="f.tele.errors.pattern">Invalid phone number.</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <select   formControlName="profession" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.profession.errors }" class="custom-select" >
+                                        <option value="" selected disabled>Votre profession *</option>
+                                        <option value="etudiant">Etudiant</option>
+                                        <option value="professeur">Professeur</option>
+                                        <option value="Doctorant">Doctorant</option>
+                                        <option value="autre">autre</option>
+                                    </select>
+                                    <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+                                        <div *ngIf="f.profession.errors.required">profession est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select   formControlName="niveauScolaire" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.niveauScolaire.errors }" class="custom-select" >
+                                        <option value="" selected disabled>Votre niveau scolaire *</option>
+                                        <option value="1">1 ere annee</option>
+                                        <option value="2">2 eme annee</option>
+                                        <option value="3">3 eme annee</option>
+                                        <option value="4">4 eme annee</option>
+                                        <option value="5">5 eme annee</option>
+                                    </select>
+                                    <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+                                        <div *ngIf="f.profession.errors.required">profession est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Votre Mot De Passe *" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password est obligatoire</div>
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Confirmer Votre Mot De Passe *" formControlName="passwordConfirm" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.passwordConfirm.errors }" />
+                                    <div *ngIf="submitted && f.passwordConfirm.errors" class="invalid-feedback">
+                                        <div *ngIf="f.passwordConfirm.errors.required">Password est obligatoire</div>
+                                        <div *ngIf="f.passwordConfirm.errors.minlength">Password must be at least 6 characters</div>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btnRegister" value="S'inscrire" />
+                            </div>
+                        </div>
+                
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

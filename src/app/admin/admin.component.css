@@ -1,0 +1,57 @@
+.gutters-sm {
+    margin-right: -70px;
+    margin-left: -70px;
+}
+.main-body {
+    padding: 15px;
+}
+
+body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;    
+    min-height: 100vh;
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.5rem;
+}
+.active{
+    /* text-decoration: underline !important; */
+    position: relative;
+    color: #37517e !important;
+    border-bottom: solid #ffffff 2.5px !important;;
+    border-top:solid #c6c8cb 2.5px !important;
+    border-right:solid #c6c8cb 2.5px !important;
+    border-left:solid #c6c8cb 2.5px !important;
+  
+    border-top: none;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+   z-index: 10;
+   padding-right: 10px !important;
+   padding-left: 10px !important;
+
+   
+}
+.hr{
+    color: rgb(233, 231, 231);
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+hr{
+    z-index: 1;
+    position: relative;
+    top:-26px !important;
+}
+.modifier{
+    background-color: #37517e;
+    color: white;
+}
+.modifier:hover{
+    background-color: #2c446e !important;
+    color: white;
+}

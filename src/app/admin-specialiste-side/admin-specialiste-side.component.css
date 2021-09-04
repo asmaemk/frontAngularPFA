@@ -1,0 +1,218 @@
+.gutters-sm {
+    margin-right: -70px;
+    margin-left: -70px;
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.1rem;
+    height: auto;
+}
+.p-2 {
+    padding: 0.5rem !important;
+  }
+
+.tableSection{
+    font-size: 0.8em;
+    /* font-family:sans-serif; */
+    /* background-color: rgb(155, 142, 142); */
+    /* margin-left: -8%; */
+    margin-top: 2%;
+}
+table{
+    background-color: #ffffff;
+    color: #000000;
+    border : 2px solid #7f7f7f;
+    width: 820px !important;
+}
+
+.fas{
+font-size: 0.7em !important;
+}
+.btn-primary{
+    background-color: #0a58ca;
+}
+.add{
+    position: relative;
+    top : -2px;
+    background-color: #3d4d6a !important;
+    border: none;
+    font-weight: 600;
+}
+.active1{
+    color: yellow !important;
+    background-color: yellow;
+}
+.scroll {
+    width: 100%;
+    height: auto;
+    /* overflow: scroll; */
+  }
+  td{
+      text-align: center;
+    padding: 8px !important;
+  }
+
+  .active{
+    /* text-decoration: underline !important; */
+    position: relative;
+    color: #37517e !important;
+    border-bottom: solid #ffffff 2.5px !important;;
+    border-top:solid #c6c8cb 2.5px !important;
+    border-right:solid #c6c8cb 2.5px !important;
+    border-left:solid #c6c8cb 2.5px !important;
+  
+    border-top: none;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+   z-index: 10;
+   padding-right: 10px !important;
+   padding-left: 10px !important;
+
+   
+}
+
+.hr{
+    color: rgb(233, 231, 231);
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+hr{
+    z-index: 1;
+    position: relative;
+    top:-26px !important;
+}
+
+body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;    
+    min-height: 88.5vh;
+}
+.main-body {
+    padding: 15px;
+}
+.inscrire{
+    width: 50% !important;
+    margin: auto;
+    background-color: #476394 !important;
+    color: white;
+  }
+  .inscrire:hover{
+
+    background-color: #2582ad !important;
+    color: white;
+  }
+  .validate{
+    font-size:0.9rem ;
+    /* border: none !important; 
+     border-bottom: 1px solid #9ea4a9 !important;  */
+     border-radius: 0%;
+    /* padding: 20px !important; */ 
+  }
+  .form-elegant .modal-header {
+    border: none !important; }
+    #elegantModalFormUpdate{
+        margin-top: 4%;
+        font-family: "Open Sans", sans-serif !important;
+      }*  .modal-xl{
+        width: 60%;
+      }
+
+
+      .modal-confirm {		
+        color: #434e65;
+        width: 525px;
+    }
+    .modal-confirm .modal-content {
+        padding: 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+    }
+    .modal-confirm .modal-header {
+        background: #47c9a2;
+        border-bottom: none;   
+        position: relative;
+        text-align: center;
+        margin: -20px -20px 0;
+        border-radius: 5px 5px 0 0;
+        padding: 35px;
+    }
+    .modal-confirm h4 {
+        text-align: center;
+        font-size: 36px;
+        margin: 10px 0;
+    }
+    .modal-confirm .form-control, .modal-confirm .btn {
+        min-height: 40px;
+        border-radius: 3px; 
+    }
+    .modal-confirm .close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: #fff;
+        text-shadow: none;
+        opacity: 0.5;
+    }
+    .modal-confirm .close:hover {
+        opacity: 0.8;
+    }
+    .modal-confirm .icon-box {
+        color: #fff;		
+        width: 95px;
+        height: 95px;
+        display: inline-block;
+        /* border-radius: 50%; */
+        z-index: 9;
+        /* border: 5px solid #fff; */
+        padding: 15px;
+        text-align: center;
+    }
+    .fa-check-circle{
+        font-size: 100px !important;
+    }
+    .modal-confirm .icon-box i {
+        font-size: 64px;
+        margin: -4px 0 0 -4px;
+    }
+    .modal-confirm.modal-dialog {
+        margin-top: 80px;
+    }
+    .modal-confirm .btn, .modal-confirm .btn:active {
+        color: #fff;
+        border-radius: 4px;
+        background: #eeb711 !important;
+        text-decoration: none;
+        transition: all 0.4s;
+        line-height: normal;
+        border-radius: 30px;
+        margin-top: 10px;
+        padding: 6px 20px;
+        border: none;
+    }
+    .modal-confirm .btn:hover, .modal-confirm .btn:focus {
+        background: #eda645 !important;
+        outline: none;
+    }
+    .modal-confirm .btn span {
+        margin: 1px 3px 0;
+        float: left;
+    }
+    .modal-confirm .btn i {
+        margin-left: 1px;
+        font-size: 20px;
+        float: right;
+    }
+
+    #elegantModalFormSuccess{
+        margin-top: 10%;
+        font-family: "Open Sans", sans-serif !important;
+      }
+      #elegantModalFormUpdate,  #elegantModalFormRegistre{
+        margin-top: 4%;
+        font-family: "Open Sans", sans-serif !important;
+      }

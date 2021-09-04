@@ -1,0 +1,223 @@
+<app-nav-bar-test></app-nav-bar-test>
+<br> 
+<div class="modal fade m-0" id="addPhoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered mt-3 mb-0" role="document">
+    <div class="modal-content">
+        <div class="modal-body container text-center p-5 m-0">
+            <div class="div"><img id="myImage3" [src]="specialistesValue().picture ? specialistesValue().picture :  profile " (click)="editPhoto()" alt="Specialite"
+                class="rounded-circle profile" width="200" height="200"></div>
+            <br>
+            <h4>{{specialistesValue().nom}} {{specialistesValue().prenom}}</h4>
+            <p class="mt-3">veuillez charger votre photo de profile</p> <br><br>
+            <div class="form-group">
+                <input class="file-input form-control" (change)="selectImg($event)" type="file" formControlName="Image" #UploadFileInput />
+            </div>
+            <button class="btn btn-warning" (click)="changePhoto()" [disabled]="charged">ajouter</button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade m-0" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered mt-3 mb-0" role="document">
+    <div class="modal-content">
+        <!-- <div class="modal-header text-white">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div> -->
+        <div class="modal-body container text-center p-5 m-0">
+            <div class="div"><img id="myImage2" [src]="specialistesValue().picture ? specialistesValue().picture :  profile " (click)="editPhoto()" alt="specialiste"
+                class="rounded-circle profile" width="200" height="200"></div>
+            <br>
+            <h4>{{specialistesValue().nom }} {{specialistesValue().prenom }}</h4>
+            <p class="mt-5 subject">Votre photo de profil aide les autres utilisateurs à vous reconnaître et vous permet de savoir quand vous êtes connecté à votre compte</p>
+            <div class="row mt-5">
+                <div class="col-6"><button class="btn btn-primary" (click)="addPhoto()">modifier</button></div>
+                <div class="col-6"><button class="btn btn-primary">supprimer</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+<form [formGroup]="registerForm" (ngSubmit)=" registreSubmit()">
+    <div class="container">
+        <div class="main-body">
+              <!-- /Breadcrumb -->
+        <div class="row gutters-sm">
+            <div class="col-md-3 mb-1">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img id="myImage1" [src]="specialistesValue().picture ? specialistesValue().picture :  profile " (click)="editPhoto()" alt="specialiste"
+                                class="rounded-circle profile" width="200" height="200">
+                            <hr>
+                            <div class="mt-3">
+                                <h4>{{specialistesValue().nom }} {{specialistesValue().prenom }} </h4>
+                                <p class="text-secondary mb-1">{{specialistesValue().specialite }}</p>
+                                <p class="text-muted font-size-sm">{{specialistesValue().adresse }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-9 ">
+                <div class="card">
+                    <div class="menu">
+                        <nav class="navbar navbar-expand-lg navbar-light ">
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent" type="button" style="text-align: center;">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                              <li class="nav-item">
+                                <a class="nav-link fw-bold ms-5" href="/specialiste/home">Profil</a>
+                              </li>
+                              <li class="nav-item">                                                 
+                                <a class="nav-link fw-bold ms-5" [routerLink]="['/specialiste/home']" routerLinkActive="active">Gestion des Enquetes </a>
+                              </li>
+                              <!-- <li class="nav-item">                                                 
+                                <a class="nav-link fw-bold ms-5" [routerLink]="['/board-depression']" routerLinkActive="active">Enquete de depression</a>
+                              </li>
+                              <li class="nav-item">                                                 
+                                <a class="nav-link fw-bold ms-5" [routerLink]="['/board-stress']" routerLinkActive="active">Enquete de stress</a>
+                              </li> -->
+                            </ul> <hr>
+                          
+                          </div>
+                         
+                      </nav>
+                      <hr>
+                      </div>
+                      
+                    <div class="card-body">
+                        
+                        <div class="row mb-3 form-group">
+                            <div class="col-sm-3">
+                                
+                                <h6 class="mb-0">Nom</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" formControlName="nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" value="{{specialistesValue().nom}}">
+                                <!-- <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                                    <div *ngIf="f.nom.errors.required">Nom est requis</div>
+                                </div> -->
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3 form-group">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Prenom</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" formControlName="prenom" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" value="{{specialistesValue().prenom}}">
+                                <!-- <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                                    <div *ngIf="f.prenom.errors.required">prenom est requis</div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="row mb-3 form-group">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" value="{{specialistesValue().email}}">
+                            </div>
+                            <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email est requis</div>
+                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                            </div> -->
+                        </div>
+                        <div class="row mb-3 form-group">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Date de Naissance</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="date" formControlName="date_naissance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date_naissance.errors }" value="{{specialistesValue().date_naissance.split('T')[0]}}">
+                                <!-- <div *ngIf="submitted && f.date_naissance.errors" class="invalid-feedback">
+                                    <div *ngIf="f.date_naissance.errors.required">date de naissance est requis</div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="row mb-3 form-group">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Telephonne</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" formControlName="tele" [ngClass]="{ 'is-invalid': submitted && f.tele.errors }" value="{{specialistesValue().numero_tele}}">
+                                <!-- <div *ngIf="submitted && f.tele.errors" class="invalid-feedback">
+                                    <div *ngIf="f.tele.errors.required">numero de tele est requis</div>
+                                    <div *ngIf="f.tele.errors.minlength">Password must have  10 degit </div>
+                                    <div *ngIf="f.tele.errors.maxlength">Password must have  10 degit </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="row mb-3 form-group">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Adresse</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" formControlName="adresse" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" value="{{specialistesValue().adresse}}">
+                                <!-- <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+                                    <div *ngIf="f.adresse.errors.required">Adresse est requis</div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="row mb-3 form-group">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">specialite</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" formControlName="specialite" [ngClass]="{ 'is-invalid': submitted && f.specialite.errors}" value="{{specialistesValue().specialite}}">
+                            </div>
+                            <!-- <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+                                <div *ngIf="f.profession.errors.required"> profession est requis</div>
+                            </div> -->
+                        </div>
+                        <!-- <div class="row mb-3 form-group">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Deplome</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input (change)="selectDeplome($event)" onclick="(this.type='file')"  placeholder="Charger Votre Deplome" accept="application/pdf"  formControlName="deplome" class="file-input form-control" [ngClass]="{ 'is-invalid': submitted && f.deplome.errors }" value="{{specialistesValue().deplome}}" />
+                            </div>
+                        </div>
+                        <div class="row mb-3 form-group">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Cv</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input (change)="selectCV($event)" onclick="(this.type='file')"  placeholder="Charger Votre Cv"  accept="application/pdf" formControlName="CV" class="file-input form-control" [ngClass]="{ 'is-invalid': submitted && f.CV.errors }"  />
+                            </div>
+                            
+                        </div> -->
+                        <div class="row mb-3 form-group" style="display: none;">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Password</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.specialite.errors}" value="{{specialistesValue().password}}">
+                            </div>
+                            <!-- <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+                                <div *ngIf="f.profession.errors.required"> profession est requis</div>
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9 text-secondary" style="text-align:center;">
+                                <input type="submit" class="btn btn-info mybutton "  [routerLink]="['/specialiste/home']" routerLinkActive="active" value="Enregistrer les modificatons">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

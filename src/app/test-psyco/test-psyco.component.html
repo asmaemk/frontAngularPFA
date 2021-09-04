@@ -1,0 +1,35 @@
+<div *ngIf="uploading"  class="div">
+    <app-nav-bar-test></app-nav-bar-test>
+    <div *ngIf="!refresh" class="test2">
+        <img src="../../assets/img/download-removebg-preview.png">
+    </div>
+    <div *ngIf="refresh" class="btn btn-warning ">refresh</div>
+
+</div>
+
+<div *ngIf="!uploading"  class="cover">
+<div class="test">
+    <div class="row d-flex justify-content-center">
+        <div class="testZone col-6 mt-5 p-3">
+            <h5 class="text-center  titre-test">Test D'anexité</h5>
+            <div class="underline mb-5"></div>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+
+                <div *ngFor="let question of test" class="question p-4 mb-3 form-group">
+                    <h6 class="fw-bolder">{{question.content}}</h6>
+                    <div *ngFor="let suggestion of question.answer"  class="form-check">
+                        <input class="form-check-input" value="{{suggestion.id}}" type="radio" name="{{'Q'+question.id}}"
+                            formControlName="{{'Q'+question.id}}" id="{{suggestion.id}}">
+                        <label class="form-check-label" for="{{suggestion.id}}">{{suggestion.content}}
+                        </label>
+                    </div>
+                    <div *ngIf="submitted && f['Q'+question.id].errors" class="text-danger">
+                        <div *ngIf="f['Q'+question.id].errors?.required">!! veuillez choisir une suggestion *</div>
+                    </div>
+                </div>
+            </form>
+            <button class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,383 @@
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <app-nav-bar-test></app-nav-bar-test>
+    <div class="register">
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="exampleModalLongTitle">la modification est bien effectuer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <!-- <p>{{message}}</p> -->
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ferme</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div id="login">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Bonjour</h3>
+            <p>vous etes dans le bon chemain</p>
+            <button > <a href="/admin/specialiste-side" class="text-dark"  >Retour</a></button><br />
+        </div>
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Rejoinez nous</h3>
+                    <form [formGroup]="registerForm" (ngSubmit)=" registreSubmit()">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" formControlName="nom" class="form-control" placeholder="Votre Nom *" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                                        <div *ngIf="f.nom.errors.required">nom is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" formControlName="prenom" placeholder="Votre Prenom *" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                                    <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Votre Mot De Passe *" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Confirmer Votre Mot De Passe *" formControlName="passwordConfirm" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.passwordConfirm.errors }" />
+                                    <div *ngIf="submitted && f.passwordConfirm.errors" class="invalid-feedback">
+                                        <div *ngIf="f.passwordConfirm.errors.required">Password is required</div>
+                                        <div *ngIf="f.passwordConfirm.errors.minlength">Password must be at least 6 characters</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="maxl">
+                                        <select  formControlName="sexe" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sexe.errors }" class="custom-select">
+                                            <option value="" selected disabled>Votre Sexe</option>
+                                            <option value="M">M</option>
+                                            <option value="F">F</option>
+                                        </select>
+                                        <div *ngIf="submitted && f.sexe.errors" class="invalid-feedback">
+                                            <div *ngIf="f.sexe.errors.required">sexe is required</div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input (change)="selectDeplome($event)" onclick="(this.type='file')"  placeholder="uploader votre deplome" accept="application/pdf"  formControlName="deplome" class="file-input form-control" [ngClass]="{ 'is-invalid': submitted && f.deplome.errors }"  />
+                                    <div *ngIf="submitted && f.deplome.errors" class="invalid-feedback">
+                                        <div *ngIf="f.deplome.errors.required">date de naissance is required</div>
+                                        <div *ngIf="f.deplome.errors.fileSize">size not allowed</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" formControlName="email" placeholder="Votre Email *" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <input type="text" (focus)="changeTele()"    placeholder="Votre Numero De Tele *" formControlName="tele" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tele.errors }" />
+                                    <div *ngIf="submitted && f.tele.errors" class="invalid-feedback">
+                                        <div *ngIf="f.tele.errors.required">numero de tele is required</div>
+                                        <div *ngIf="f.tele.errors.pattern">Invalid phone number.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input placeholder="Date de naissance" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" formControlName="date_naissance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date_naissance.errors }"  />
+                                    <div *ngIf="submitted && f.date_naissance.errors" class="invalid-feedback">
+                                        <div *ngIf="f.date_naissance.errors.required">date de naissance is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select   formControlName="specialite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.specialite.errors }" class="custom-select" >
+                                        <option value="" selected disabled>votre profession</option>
+                                        <option value="etudiant">Etudiant</option>
+                                        <option value="professeur">Professeur</option>
+                                        <option value="Doctorant">Doctorant</option>
+                                        <option value="cousin">najar</option>
+                                    </select>
+                                    <div *ngIf="submitted && f.specialite.errors" class="invalid-feedback">
+                                        <div *ngIf="f.specialite.errors.required">profession is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                <input (change)="selectCV($event)" onclick="(this.type='file')"  placeholder="uploader votre cv"  accept="application/pdf" formControlName="CV" class="file-input form-control" [ngClass]="{ 'is-invalid': submitted && f.CV.errors }"  />
+                                    <div *ngIf="submitted && f.CV.errors" class="invalid-feedback">
+                                        <div *ngIf="f.CV.errors.required">date de naissance is required</div>
+                                        <div *ngIf="f.CV.errors.fileSize">size not allowed</div>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btnRegister" value="Modifier" />
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<div *ngIf='confirm' class="bg-success text-center">{{message}}</div>
+<div *ngIf='!confirm' class="container">
+    <hr>
+    <div class="card bg-light row justify-content-center align-items-center">
+        <div class="card-body mx-auto" style="max-width: 400px;">
+           
+            <form [formGroup]="registerForm" (ngSubmit)=" registreSubmit()">
+                <div class="form-group">
+                    <label>votre Nom</label>
+                    <input type="text" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                        <div *ngIf="f.nom.errors.required">nom is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>prenom</label>
+                    <input type="text" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                    <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                        <div *ngIf="f.prenom.errors.required">prenom is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Sexe</label><br>
+                    <select  formControlName="sexe" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sexe.errors }" class="custom-select" style="max-width: 120px;">
+                        <option selected value="M">M</option>
+                        <option value="F">F</option>
+                    </select>
+                    <div *ngIf="submitted && f.sexe.errors" class="invalid-feedback">
+                        <div *ngIf="f.sexe.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date de naissance</label>
+                    <input type="date" formControlName="date_naissance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date_naissance.errors }"  />
+                    <div *ngIf="submitted && f.date_naissance.errors" class="invalid-feedback">
+                        <div *ngIf="f.date_naissance.errors.required">date de naissance is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Specialite</label><br>
+                    <select  formControlName="specialite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.specialite.errors }" class="custom-select" style="max-width: 120px;">
+                        <option selected value="etudiant">psyco</option>
+                        <option value="professeur">psyco</option>
+                        <option value="Doctorant">psyco</option>
+                        <option value="cousin">psyco</option>
+                    </select>
+                    <div *ngIf="submitted && f.specialite.errors" class="invalid-feedback">
+                        <div *ngIf="f.specialite.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>numero du Tele</label><br>
+                    <select class="custom-select" style="max-width: 120px;">
+                        <option selected="">+212</option>
+                    </select>
+                    <input type="text" formControlName="tele" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tele.errors }" />
+                    <div *ngIf="submitted && f.tele.errors" class="invalid-feedback">
+                        <div *ngIf="f.tele.errors.required">numero de tele is required</div>
+                        <div *ngIf="f.tele.errors.minlength">Password must have  10 degit </div>
+                        <div *ngIf="f.tele.errors.maxlength">Password must have  10 degit </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>deplome ou formation</label>
+                    <input (change)="selectDeplome($event)" accept="application/pdf" type="file" formControlName="deplome" class="file-input form-control" [ngClass]="{ 'is-invalid': submitted && f.deplome.errors }"  />
+                    <div *ngIf="submitted && f.deplome.errors" class="invalid-feedback">
+                        <div *ngIf="f.deplome.errors.required">date de naissance is required</div>
+                        <div *ngIf="f.deplome.errors.fileSize">size not allowed</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>votre CV</label>
+                    <input (change)="selectCV($event)" type="file" accept="application/pdf" formControlName="CV" class="file-input form-control" [ngClass]="{ 'is-invalid': submitted && f.CV.errors }"  />
+                    <div *ngIf="submitted && f.CV.errors" class="invalid-feedback">
+                        <div *ngIf="f.CV.errors.required">date de naissance is required</div>
+                        <div *ngIf="f.CV.errors.fileSize">size not allowed</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Confirmer Password</label>
+                    <input type="password" formControlName="passwordConfirm" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.passwordConfirm.errors }" />
+                    <div *ngIf="submitted && f.passwordConfirm.errors" class="invalid-feedback">
+                        <div *ngIf="f.passwordConfirm.errors.required">Password is required</div>
+                        <div *ngIf="f.passwordConfirm.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button (click)="registreSubmit"  class="btn btn-primary">Register</button>
+                </div>
+            </form>
+       
+        </div>
+    </div>
+</div> -->
+
+
+
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<div *ngIf='confirm' class="mt-5 w-100 bg-success text-white text-center ">{{message}}</div>
+<div *ngIf='!confirm' class="container">
+    <hr>
+    <div class="card bg-light row justify-content-center align-items-center">
+        <div class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Create Account</h4>
+            <p>
+                <a href="" class="btn btn-block btn-linkedin"> <i class="fab fa-linkedin"></i>   Login via linkedin</a>
+                <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via
+                    facebook</a>
+                <a href="" class="btn btn-block btn-google-plus"> <i class="fab fa-google-plus"></i>   Login via
+                    google</a>
+
+            </p>
+            <p class="divider-text">
+                <span class="bg-light">OR</span>
+            </p>
+            <form [formGroup]="registerForm" (ngSubmit)=" registreSubmit()">
+                <div class="form-group">
+                    <label>votre Nom</label>
+                    <input type="text" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                        <div *ngIf="f.nom.errors.required">nom is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>prenom</label>
+                    <input type="text" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                    <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                        <div *ngIf="f.prenom.errors.required">prenom is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Sexe</label><br>
+                    <select  formControlName="sexe" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sexe.errors }" class="custom-select" style="max-width: 120px;">
+                        <option selected value="M">M</option>
+                        <option value="F">F</option>
+                    </select>
+                    <div *ngIf="submitted && f.sexe.errors" class="invalid-feedback">
+                        <div *ngIf="f.sexe.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date de naissance</label>
+                    <input type="date" formControlName="date_naissance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date_naissance.errors }"  />
+                    <div *ngIf="submitted && f.date_naissance.errors" class="invalid-feedback">
+                        <div *ngIf="f.date_naissance.errors.required">date de naissance is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Specialite</label><br>
+                    <select  formControlName="specialite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.specialite.errors }" class="custom-select" style="max-width: 120px;">
+                        <option selected value="etudiant">psyco</option>
+                        <option value="professeur">psyco</option>
+                        <option value="Doctorant">psyco</option>
+                        <option value="cousin">psyco</option>
+                    </select>
+                    <div *ngIf="submitted && f.specialite.errors" class="invalid-feedback">
+                        <div *ngIf="f.specialite.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>numero du Tele</label><br>
+                    <select class="custom-select" style="max-width: 120px;">
+                        <option selected="">+212</option>
+                    </select>
+                    <input type="text" formControlName="tele" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tele.errors }" />
+                    <div *ngIf="submitted && f.tele.errors" class="invalid-feedback">
+                        <div *ngIf="f.tele.errors.required">numero de tele is required</div>
+                        <div *ngIf="f.tele.errors.minlength">Password must have  10 degit </div>
+                        <div *ngIf="f.tele.errors.maxlength">Password must have  10 degit </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>deplome ou formation</label>
+                    <input (change)="selectDeplome($event)" type="file" formControlName="deplome" class="file-input form-control" [ngClass]="{ 'is-invalid': submitted && f.deplome.errors }"  />
+                    <div *ngIf="submitted && f.deplome.errors" class="invalid-feedback">
+                        <div *ngIf="f.deplome.errors.required">date de naissance is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>votre CV</label>
+                    <input (change)="selectCV($event)" type="file" formControlName="CV" class="file-input form-control" [ngClass]="{ 'is-invalid': submitted && f.CV.errors }"  />
+                    <div *ngIf="submitted && f.CV.errors" class="invalid-feedback">
+                        <div *ngIf="f.CV.errors.required">date de naissance is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Confirmer Password</label>
+                    <input type="password" formControlName="passwordConfirm" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.passwordConfirm.errors }" />
+                    <div *ngIf="submitted && f.passwordConfirm.errors" class="invalid-feedback">
+                        <div *ngIf="f.passwordConfirm.errors.required">Password is required</div>
+                        <div *ngIf="f.passwordConfirm.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button (click)="registreSubmit"  class="btn btn-primary">Register</button>
+                </div>
+            </form>
+       
+        </div>
+    </div>
+</div> -->

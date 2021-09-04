@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Creative - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <!-- <link href="styles.css" rel="stylesheet" /> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" async
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" async
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" async
+        crossorigin="anonymous"></script>
+    r: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Se
+                            connecter</strong></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body mx-4">
+                    <!--Body-->
+                    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+                    <div class="md-form mb-4 form-group">
+                        <input type="email" id="Form-email1" formControlName="email" class="form-control validate validate" placeholder="Votre email">
+                        <div *ngIf="submitted && f2.email.errors" class="invalid-feedback">
+                            <div *ngIf="f2.email.errors.required">Email est obligatoire</div>
+                            <div *ngIf="f2.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+
+                    <div class="md-form pb-3 form-group">
+                        <input type="password" id="Form-pass1" formControlName="password" class="form-control validate validate"
+                            placeholder="Votre mot de pass">
+                            <div *ngIf="submitted && f2.password.errors" class="invalid-feedback">
+                                <div *ngIf="f2.password.errors.required">Password est obligatoire</div>
+                            </div>
+                        <p class="font-small blue-text d-flex justify-content-end mt-2"> <a href="#"
+                                class="blue-text mr-1">
+                                Mot de pass </a> Oublié?</p>
+                    </div>
+                </form>
+
+                    <div class="text-center mb-3">
+                        <button type="button" (click)="loginSubmit()" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Se
+                            connecter</button>
+                    </div>
+                    <p class="font-small grey-text text-right d-flex justify-content-center mb-3 pt-2"> Ou continuer
+                        avec:</p>
+
+                    <div class="row my-3 d-flex  justify-content-center">
+                        <!--Facebook-->
+                        <button type="button" class="btn btn-white reseux btn-rounded mr-md-3 z-depth-1a"><i
+                                class="fab fa-facebook-f text-center"></i></button>
+                        <!--Twitter-->
+                        <button type="button" class="btn btn-white reseux btn-rounded mr-md-3 z-depth-1a"><i
+                                class="fab fa-twitter"></i></button>
+                        <!--Google +-->
+                        <button type="button" class="btn btn-white reseux btn-rounded z-depth-1a"><i
+                                class="fab fa-google-plus-g"></i></button>
+                    </div>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer mx-5 pt-3 mb-1">
+                    <p class="font-small grey-text d-flex justify-content-end">vous n'etes pas un membre? <a href="#"
+                            class="blue-text ml-1">
+                            S'inscrire</a></p>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <!-- ======= Header ======= -->
+    <app-navbar></app-navbar>
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <h1>Bienvenue, votre santé mentale est notre priorité!</h1>
+                    <h2>On est là pour promouvoir votre santé mentale et vous aidez à surmonter vos problèmes.</h2>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                        <a class="btn-get-started scrollto" (click)="signIn()">Rejoinez nous</a>
+                        <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i
+                                class="bi bi-play-circle"></i><span>Voir le video</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="../../assets/img/hero-img.png" class="img-fluid animated" alt="">
+                </div>
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+
+    <!-- Modal -->
+    <div class="modal fade " id="elegantModalFormRegistre" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3 ms-5" id="myModalLabel">
+                        <strong>Inscription</strong></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body mx-4">
+                    <!--Body-->
+                    <form [formGroup]="registerForm" (ngSubmit)="registreSubmit()">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" formControlName="nom" class="form-control validate" placeholder="Votre Nom *" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                                        <div *ngIf="f.nom.errors.required">Nom est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" formControlName="prenom" placeholder="Votre Prenom *" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                                    <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                                        <div *ngIf="f.prenom.errors.required">Prenom est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="maxl">
+                                        <select  formControlName="sexe" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.sexe.errors }" class="custom-select validate">
+                                            <option value="" selected disabled>Votre Sexe *</option>
+                                            <option value="M">M</option>
+                                            <option value="F">F</option>
+                                        </select>
+                                        <div *ngIf="submitted && f.sexe.errors" class="invalid-feedback">
+                                            <div *ngIf="f.sexe.errors.required">Sexe est obligatoire</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input placeholder="Date de naissance *" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" formControlName="date_naissance" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.date_naissance.errors }"  />
+                                    <div *ngIf="submitted && f.date_naissance.errors" class="invalid-feedback">
+                                        <div *ngIf="f.date_naissance.errors.required">Date de naissance est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" formControlName="email" placeholder="Votre Email *" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email est obligatoire</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- (keyup)="changeTele()" -->
+                                <div class="form-group">
+                                    <input type="text" [(ngModel)]="TELE" (focus)="changeTele()"   placeholder="Votre Numero De Tele *" formControlName="tele" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.tele.errors }" />
+                                    <div *ngIf="submitted && f.tele.errors" class="invalid-feedback">
+                                        <div *ngIf="f.tele.errors.required">Numero de tele est obligatoire</div>
+                                        <div *ngIf="f.tele.errors.pattern">Invalid phone number.</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <select   formControlName="profession" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.profession.errors }" class="custom-select validate" >
+                                        <option value="" selected disabled>Votre profession *</option>
+                                        <option value="Etudiant">Etudiant</option>
+                                        <option value="Professeur">Professeur</option>
+                                        <option value="Doctorant">Doctorant</option>
+                                        <option value="autre">autre</option>
+                                    </select>
+                                    <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+                                        <div *ngIf="f.profession.errors.required">profession est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select formControlName="niveauScolaire" class="form-control validate"
+                                        [ngClass]="{ 'is-invalid': submitted && f.niveauScolaire.errors }"
+                                        class="custom-select validate">
+                                        <option value="" selected disabled>Votre niveau scolaire *</option>
+                                        <option value="1 ere annee preparatoire">1 ere annee preparatoire</option>
+                                        <option value="2 eme annee preparatoire">2 eme annee preparatoire</option>
+                                        <option value="1 ere annee cycle d'ingenieur">1 ere annee cycle d'ingenieur</option>
+                                        <option value="2 eme annee cycle d'ingenieur">2 eme annee cycle d'ingenieur</option>
+                                        <option value="3 eme annee cycle d'ingenieur">3 eme annee cycle d'ingenieur</option>
+                                    </select>
+                                    <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+                                        <div *ngIf="f.profession.errors.required">profession est obligatoire</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Votre Mot De Passe *" formControlName="password" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password est obligatoire</div>
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Confirmer Votre Mot De Passe *" formControlName="passwordConfirm" class="form-control validate" [ngClass]="{ 'is-invalid': submitted && f.passwordConfirm.errors }" />
+                                    <div *ngIf="submitted && f.passwordConfirm.errors" class="invalid-feedback">
+                                        <div *ngIf="f.passwordConfirm.errors.required">Password est obligatoire</div>
+                                        <div *ngIf="f.passwordConfirm.errors.minlength">Password must be at least 6 characters</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </form>
+                    <div class="text-center mb-3 mt-3 me-auto">
+                        <button type="button" (click)="registreSubmit()" class="btn blue-gradient btn-block btn-rounded z-depth-1a inscrire">S'inscrire</button>
+                    </div>
+                    <p class="font-small grey-text text-right d-flex justify-content-center mb-3 pt-2"> Ou continuer
+                        avec:</p>
+
+                    <div class="row my-3 d-flex  justify-content-center">
+                        <!--Facebook-->
+                        <button type="button" class="btn btn-white reseux btn-rounded mr-md-3 z-depth-1a"><i
+                                class="fab fa-facebook-f text-center"></i></button>
+                        <!--Twitter-->
+                        <button type="button" class="btn btn-white reseux btn-rounded mr-md-3 z-depth-1a"><i
+                                class="fab fa-twitter"></i></button>
+                        <!--Google +-->
+                        <button type="button" class="btn btn-white reseux btn-rounded z-depth-1a"><i
+                                class="fab fa-google-plus-g"></i></button>
+                    </div>
+                </div>
+                <!--Footer-->
+                <!-- <div class="modal-footer mx-5 pt-3 mb-1">
+                    <p class="font-small grey-text d-flex justify-content-end">vous n'etes pas un membre? <a href="#"
+                            class="blue-text ml-1">
+                            S'inscrire</a></p>
+                </div> -->
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Modal -->
+
+     <!-- Modal-for registre success -->
+     <div class="modal fade" id="elegantModalFormSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <!--Content-->
+         <div class="modal-content form-elegant">
+             <!--Header-->
+             <div class="modal-header text-center">
+                 <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong class="text-success">Votre Inscription est bien envoyer</strong></h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <!--Body-->
+             <div class="modal-body mx-4 text-center">
+                 {{message}}
+             </div>
+             <!--Footer-->
+
+         </div>
+         <!--/.Content-->
+     </div>
+ </div>
+ <!-- Modal -->
+
+</body>
+<script src="../../assets/js/main.js"></script>
+
+</html>
