@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { AuthService } from '../auth.service';
 declare var $ :any;
 @Component({
@@ -15,7 +15,7 @@ export class AcceuilComponent implements OnInit {
   TELE: String="";
   registerForm: any;
   loginForm :any;
-  user: import("angularx-social-login").SocialUser | undefined;
+  public user !: SocialUser ;
   message: any;
   confirm: boolean | undefined;
   EmailExist: boolean | undefined;
@@ -100,25 +100,25 @@ export class AcceuilComponent implements OnInit {
 
   }
   
-  // async signInGoogle(){
+  async signInGoogle(){
     
-  //   await this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(res=>this.user=res);
-  //    console.log(this.user)
-  //    this._auth.loginUserGoogle(this.user.idToken).subscribe(
-  //      res=> {
-  //       console.log("registre google account")
-  //        localStorage.removeItem('authorization');
-  //        localStorage.setItem('authorization', res.accessToken);
-  //        console.log("registre google account")
-  //         this._router.navigate(['/home']);
-      
-         
-  //      },
-  //      err=>{
-  //        console.log(err.error);
-  //      }) 
+    await this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(res=>this.user=res);
+     console.log(this.user)
+     this._auth.loginUserGoogle(this.user.idToken).subscribe(
+       res=> {
+        console.log("registre google account")
+         localStorage.removeItem('authorization');
+         localStorage.setItem('authorization', res.accessToken);
+         console.log("registre google account")
+          this._router.navigate(['/home']);
+          $('#elegantModalFormRegistre').modal('hide');
+          $('#elegantModalForm').modal('hide');
+       },
+       err=>{
+         console.log(err.error);
+       }) 
      
-  //  }
+   }
 
 get f() { return this.registerForm.controls; }
 get f2() { return this.loginForm.controls; }

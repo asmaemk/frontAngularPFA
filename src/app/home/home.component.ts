@@ -123,14 +123,12 @@ export class HomeComponent implements OnInit {
             email: [this.user.email, [Validators.required, Validators.email]],
             tele: [this.user.numero_tele, [Validators.required,Validators.pattern("^((\\([0-9][0-9][0-9]\\))|(\\([0-9][0-9]\\)))?\\-[0-9]{10}$")] ],
             sexe : [this.user.sexe, [Validators.required]],
-            date_naissance : [this.user.date_naissance.split('T')[0], [Validators.required]],
+            date_naissance : [this.user?.date_naissance ? this.user.date_naissance.split('T')[0] : "null", [Validators.required]],
             niveauScolaire : [this.user.niveauScolaire, [Validators.required]],
             adresse : [this.user.adresse, [Validators.required]],
             profession : [this.user.profession, [Validators.required]] },{
               // validator: this.MustMatch('password', 'confirmPassword')
             });
-            let date = this.user.date_naissance.split('T')[0];
-            console.log(date)
          }, 3000);
 
 
